@@ -29,6 +29,7 @@ chess.load();
 - Get all possible and captured moves
 - Set how game should be end.
 - Detect Stalemate, Checkmate, Three-Fold repeatition, Insufficiant material, Fifty moves 
+- Undo, Redo game positions
 
 
 ## Methods
@@ -41,7 +42,7 @@ let error = chess.load(
     {
         'fiftymove': true,
         'insufficiantMaterial': true,
-        'thirdFoldRepetition': true, 
+        'threeFoldRepetition': true, 
         'stalemate': false, 
         'checkmate': false
     }
@@ -223,7 +224,7 @@ console.log(moves);
     {from: 'G1', to: 'H3', piece: 'N', color: 'W'}
 ] */
 ```
-This method will return all legal moves for a square or a side. If you will pass square position then this will return all captured and valid square moves in seperate array. But if don't pass any parameter then it will return all possible moves for one side pieces.
+This method will return all legal moves for a square of a side. If you will pass square position then this will return all captured and valid square moves in seperate array. But if don't pass any parameter then it will return all possible moves for one side pieces.
 
 | FLAGS | Description                |
 | :-------- |:------------------------- |
@@ -245,7 +246,7 @@ chess.move({from: 'A2', to: 'A3', flag: 'P'});
 chess.move('A2', 'A3');
 ```
 
-You can move a piece from one square to another by two ways. It is depending on your moves type. If you called `.moves()` method with parameter then you have to use second way otherwise use first way.
+You can move a piece from one square to another by two ways.  You can not use this method before `.moves()` methods. So everytime before moving any piece using this method you have to use `.moves()` method.
 
 ### Note:
 Here all pieces name, colors name and square positions are capitilized
